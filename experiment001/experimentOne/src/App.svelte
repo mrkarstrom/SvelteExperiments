@@ -1,12 +1,75 @@
 <script>
+  import data from './data.json';
+  let author = '';
+  let post = '';
+
+  let posts = data.data;
+
   let isChecked = 1;
 
   function changeChecked(checkedNum) {
     isChecked = checkedNum;
   }
+
+  function addPost() {
+    const _post = {
+      id: posts.length + 1,
+      author: author,
+      post: post,
+    };
+    posts.push(_post);
+    posts = posts;
+
+    author = '';
+    post = '';
+  }
 </script>
 
-<main class="flex flex-col justify-center items-center h-screen space-y-4">
+<main class="h-screen flex flex-col justify-center items-center space-y-4">
+  <h1>Add Post</h1>
+  <section>
+    <div class="form-control">
+      <label for="author" class="label">
+        <span class="label-text">Author</span>
+      </label>
+      <input
+        bind:value={author}
+        name="author"
+        type="text"
+        placeholder="Username"
+        class="input input-primary input-bordered"
+      />
+    </div>
+    <div class="form-control">
+      <label for="post" class="label">
+        <span class="label-text">Username</span>
+      </label>
+      <textarea
+        class="textarea h-24 textarea-bordered textarea-primary"
+        bind:value={post}
+        type="text"
+        name="post"
+        placeholder="Text"
+      />
+    </div>
+    <button class="btn btn-primary ">Submit</button>
+  </section>
+
+  <section class="overflow-auto space-y-4">
+    {#each posts as post}
+      <div class="card w-80 card-bordered card-compact lg:card-normal">
+        <div class="card-body">
+          <h2 class="card-title">Post</h2>
+          <p>
+            Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit
+            sit necessitatibus veritatis sed molestiae voluptates incidunt iure
+            sapiente.
+          </p>
+        </div>
+      </div>
+    {/each}
+  </section>
+
   <div>
     <div class="btn-group">
       <input
@@ -59,45 +122,4 @@
 </main>
 
 <style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
-  }
 </style>

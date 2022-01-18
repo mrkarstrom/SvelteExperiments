@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "author": "Magnus",
+      "post": "Text",
+      "canPost": true
+    },
+    {
+        "id": 2,
+        "author": "Matt",
+        "post": "Cool text",
+        "canPost": true
+      },
+      {
+        "id": 3,
+        "author": "Mike",
+        "post": "Strict text",
+        "canPost": true
+      },
+      {
+        "id": 4,
+        "author": "Morgan",
+        "post": "Scary text",
+        "canPost": true
+      }
+  ]
+}
