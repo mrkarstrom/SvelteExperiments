@@ -1,9 +1,36 @@
 <script>
+  import { onMount, onDestroy } from 'svelte';
   export let author;
   export let post;
+  export let id;
+  export let deletePost;
+
+  let timeOnScreen = 0;
+  let timeInterval = null;
+
+  onMount(() => {
+    timeInterval = setInterval(() => {
+      ++timeOnScreen;
+      console.log(`Interval updated for post id ${id}`);
+    }, 1000);
+  });
+
+  onDestroy(() => {
+    clearInterval(timeInterval);
+  });
 </script>
 
 <div class="card w-80 card-bordered card-compact lg:card-normal">
+  <div
+    on:click={() => deletePost(id)}
+    class="absolute right-0 pr-2 text-error text-xl"
+  >
+    x
+  </div>
+  <div class="absolute left-0 pl-2 text text-xl">
+    {timeOnScreen}
+  </div>
+
   <div class="card-body">
     <h2 class="card-title">{author}</h2>
     <p>
