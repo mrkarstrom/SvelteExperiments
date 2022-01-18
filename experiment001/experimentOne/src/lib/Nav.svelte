@@ -3,7 +3,7 @@
   const location = useLocation();
 </script>
 
-<div class="flex space-x-4">
+<div class="flex space-x-4 justify-center p-5">
   <Link class={$location.pathname === '/' ? 'underline' : ''} to="/"
     >Add Post</Link
   >
