@@ -1,5 +1,8 @@
 <script>
   import data from './data.json';
+  import Post from './lib/Posts.svelte';
+  import Form from './lib/Form.svelte';
+
   let author = '';
   let post = '';
 
@@ -27,7 +30,7 @@
 
 <main class="h-screen flex flex-col justify-center items-center space-y-4">
   <h1>Add Post</h1>
-  <section>
+  <section class="space-y-4">
     <div class="form-control">
       <label for="author" class="label">
         <span class="label-text">Author</span>
@@ -52,21 +55,12 @@
         placeholder="Text"
       />
     </div>
-    <button class="btn btn-primary ">Submit</button>
+    <button on:click={addPost} class="btn btn-primary w-full">Submit</button>
   </section>
 
   <section class="overflow-auto space-y-4">
-    {#each posts as post}
-      <div class="card w-80 card-bordered card-compact lg:card-normal">
-        <div class="card-body">
-          <h2 class="card-title">Post</h2>
-          <p>
-            Rerum reiciendis beatae tenetur excepturi aut pariatur est eos. Sit
-            sit necessitatibus veritatis sed molestiae voluptates incidunt iure
-            sapiente.
-          </p>
-        </div>
-      </div>
+    {#each posts.reverse() as post}
+      <Post author={post.author} post={post.post} />
     {/each}
   </section>
 
